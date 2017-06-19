@@ -26,7 +26,10 @@
             el: '.q-blog',
             data(){
                 return {
-                    oneUser: {}
+                    oneUser: {
+                        email:'dd@dd.com',
+                        password:'123456'
+                    }
                 }
             },
             methods: {
@@ -35,7 +38,7 @@
                     axios.post('/login', self.oneUser).then(function (response) {
                         console.log(response);
                         self.$Message.info(response.data.msg);
-                        window.location.href = response.data.location;
+//                        window.location.href = response.data.location;
                     })
                 },
 

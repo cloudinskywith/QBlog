@@ -27,8 +27,9 @@ module.exports = function(app,passport){
                 var response = {
                     status:1,
                     msg:'登录成功',
-                    location:'/dashboard'
+                    location:'/dashboard',
                 }
+                response.user = user;
                 return res.json(response);
             });
         })(req, res, next);
