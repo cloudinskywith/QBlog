@@ -1,0 +1,13 @@
+{% extends "layout.njk" %}
+
+
+{% block body %}
+    <i-button type="primary" @click="goToLogin">登录</i-button>
+    <i-button type="primary" @click="goToSignup">注册</i-button>
+    <city-item></city-item>
+{% endblock %}
+
+
+{% block scripts %}
+    <script src="js/index-page.js"></script>
+{% endblock %}

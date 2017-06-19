@@ -1,0 +1,50 @@
+{% extends "../layout.njk" %}
+
+{% block body %}
+    <a href="/">首页</a>
+    <a href="/users/signup">注册</a>
+    <div>
+        <i-form label-position="left" :label-width="82"
+                style="width:625px;">
+            <Form-Item label="邮箱">
+                <i-input placeholder="请输入邮箱" v-model="oneUser.email"></i-input>
+            </Form-Item>
+            <Form-Item label="密码">
+                <i-input placeholder="请输入密码" v-model="oneUser.password"></i-input>
+            </Form-Item>
+
+            <i-button type="primary" @click="doLogin">登录</i-button>
+        </i-form>
+    </div>
+
+{% endblock %}
+
+
+{% block scripts %}
+    <script>
+        var vm = new Vue({
+            el: '.q-blog',
+            data(){
+                return {
+                    oneUser:{}
+                }
+            },
+            methods: {
+                doLogin(){
+                    var self = this;
+                    axios.post('/login',self.oneUser).then(function(response){
+                        console.log(response);
+                        self.$Message.info(response);
+                    })
+                },
+
+            },
+            created(){
+
+            },
+            mounted(){
+
+            }
+        })
+    </script>
+{% endblock %}
