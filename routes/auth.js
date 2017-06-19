@@ -6,10 +6,34 @@ module.exports = function(app,passport){
     app.get('/login', users.get('/login'));
     app.get('/dashboard',isLoggedIn, users.get('/dashboard'));
     app.get('/logout',users.get('/logout'));
+    //
+    // app.post('/login', passport.authenticate('local-login',  { successRedirect: '/dashboard',
+    //     failureRedirect: '/login'}
+    // ));
 
-    app.post('/login', passport.authenticate('local-login',  { successRedirect: '/dashboard',
-        failureRedirect: '/login'}
-    ));
+    app.post('/login',function (req, res, next) {
+        passport.authenticate('local-login',function (err, user, info) {
+            if(err) return next(err)
+            if(!user){
+                var response = {
+                    status:0,
+                    msg:'用户不存在',
+                    location:'/login'
+                }
+                return res.json(response);
+            }
+            req.logIn(user,function (err) {
+                if(err){return next(err);}
+                var response = {
+                    status:1,
+                    msg:'登录成功',
+                    location:'/dashboard'
+                }
+                return res.json(response);
+            });
+        })(req, res, next);
+    });
+
     app.post('/signup', passport.authenticate('local-signup',  { successRedirect: '/dashboard',
         failureRedirect: '/signup'}
     ));

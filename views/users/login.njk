@@ -26,15 +26,16 @@
             el: '.q-blog',
             data(){
                 return {
-                    oneUser:{}
+                    oneUser: {}
                 }
             },
             methods: {
                 doLogin(){
                     var self = this;
-                    axios.post('/login',self.oneUser).then(function(response){
+                    axios.post('/login', self.oneUser).then(function (response) {
                         console.log(response);
-                        self.$Message.info(response);
+                        self.$Message.info(response.data.msg);
+                        window.location.href = response.data.location;
                     })
                 },
 
