@@ -2,6 +2,8 @@
 var users = require('../routes/users');
 var formidable = require('formidable');
 var fs = require('fs');
+var path = require('path');
+var uuid = require('node-uuid');
 
 module.exports = function(app,passport){
     app.get('/signup', users.get('/signup'));
@@ -69,21 +71,30 @@ module.exports = function(app,passport){
     });
 
 
-    app.post('/upload',function (req, res) {
+    app.post('/upload',function(req,res){
         var form = new formidable.IncomingForm();
-        form.uploadDir = path.join(__dirname + '/public/upload');
-        form.on('file',function(field, file){
-            fs.rename(file.path, path.join(form.uploadDir, file.name));
+        form.parse(req);
+        var image_path;
+        var image_name;
+        form.on('fileBegin',function (name, file) {
+            var uploadpath = path.join(__dirname + '/..');
+            // file.path = uploadpath + '/public/upload/' + file.name;
+            image_name = uuid.v4();
+            file.path = uploadpath + '/public/upload/' + image_name + '.jpg';
         });
-        form.on('error',function(err){
-            console.log('An error has occured:\n' + err);
-        })
-        form.on('end',function(){
-            res.send('success');
-        })
-        // form.parse(req);
-        res.send('ok');
-    });
+        form.on('file',function (name, file) {
+            console.log(file);
+            var response = {
+                status:1,
+                msg:'上传成功',
+                path:'/upload/' + image_name + '.jpg'
+                // location:'/dashboard',
+            };
+            res.json(response);
+        });
+
+    })
+
 
     function isLoggedIn(req, res, next) {
         console.log(req.isAuthenticated());

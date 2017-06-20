@@ -74,7 +74,7 @@
 
 
 var bind = __webpack_require__(10);
-var isBuffer = __webpack_require__(45);
+var isBuffer = __webpack_require__(46);
 
 /*global toString:true*/
 
@@ -38647,7 +38647,7 @@ var Component = __webpack_require__(4)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/home/liaobaocheng/WebstormProjects/QBlog/meme/vue/CityItem.vue"
+Component.options.__file = "D:\\ExpressJS\\QBlog\\meme\\vue\\CityItem.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] CityItem.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -38691,7 +38691,7 @@ var Component = __webpack_require__(4)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/home/liaobaocheng/WebstormProjects/QBlog/meme/vue/MyEditor.vue"
+Component.options.__file = "D:\\ExpressJS\\QBlog\\meme\\vue\\MyEditor.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] MyEditor.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -38735,7 +38735,7 @@ var Component = __webpack_require__(4)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/home/liaobaocheng/WebstormProjects/QBlog/meme/vue/TheUpload.vue"
+Component.options.__file = "D:\\ExpressJS\\QBlog\\meme\\vue\\TheUpload.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] TheUpload.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -39771,7 +39771,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    name: 'my-upload',
+    name: 'the-upload',
     data() {
         return {
             filesrc: null,
@@ -39813,7 +39813,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 reader.onload = function (e) {
                     self.uploadImg(files[0], self.name, function (res) {
                         self.filesrc = e.target.result;
-                        self.$emit('uploadsuccess', res.files[0]);
+                        self.$emit('uploadsuccess', res.path);
                     });
                     self.$refs.file.value = null;
                 };
@@ -39992,8 +39992,8 @@ function fromByteArray (uint8) {
 
 
 var base64 = __webpack_require__(39)
-var ieee754 = __webpack_require__(44)
-var isArray = __webpack_require__(46)
+var ieee754 = __webpack_require__(45)
+var isArray = __webpack_require__(41)
 
 exports.Buffer = Buffer
 exports.SlowBuffer = SlowBuffer
@@ -41775,6 +41775,17 @@ function isnan (val) {
 
 /***/ }),
 /* 41 */
+/***/ (function(module, exports) {
+
+var toString = {}.toString;
+
+module.exports = Array.isArray || function (arr) {
+  return toString.call(arr) == '[object Array]';
+};
+
+
+/***/ }),
+/* 42 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(undefined);
@@ -41788,7 +41799,7 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", 
 
 
 /***/ }),
-/* 42 */
+/* 43 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(undefined);
@@ -41796,13 +41807,13 @@ exports = module.exports = __webpack_require__(2)(undefined);
 
 
 // module
-exports.push([module.i, "\n.upload[data-v-64fd3c54] {\n    width: 78px;\n    height: 78px;\n    line-height: 78px;\n    text-align: center;\n    overflow: hidden;\n    background: #fff;\n    position: relative;\n    margin-right: 8px;\n    transition: border-color .2s ease;\n    border-radius: 3px;\n}\n.upload:hover .list-cover[data-v-64fd3c54] {\n    display: block;\n}\n.upload:hover .upload-input[data-v-64fd3c54] {\n    border-color: #00C8AF;\n    color: #00C8AF;\n}\n.list-cover[data-v-64fd3c54] {\n    display: none;\n    position: absolute;\n    top: 0;\n    bottom: 0;\n    left: 0;\n    right: 0;\n    background: rgba(0, 0, 0, .6);\n}\n.list-cover i[data-v-64fd3c54] {\n    color: #fff;\n    font-size: 20px;\n    cursor: pointer;\n    margin: 0 2px;\n}\ninput[type='file'][data-v-64fd3c54] {\n    width: 0;\n    height: 0;\n    opacity: 0;\n    z-index: -1;\n    position: absolute;\n}\n.upload-input[data-v-64fd3c54] {\n    cursor: pointer;\n    position: absolute;\n    top: 0;\n    bottom: 0;\n    left: 0;\n    right: 0;\n    border: 1px solid #dddddd;\n    border-radius: 3px;\n    line-height: normal;\n    display: flex;\n    flex-wrap: wrap;\n    align-content: center;\n    justify-content: center;\n    color: #C8C8C8;\n}\n.upload-input i[data-v-64fd3c54] {\n    font-size: 20px;\n    margin-bottom: 5px;\n    width: 100%;\n}\n.upload-input span[data-v-64fd3c54] {\n    display: block;\n    font-size: 13px;\n    /*white-space: nowrap;*/\n}\n.upload img[data-v-64fd3c54]{\n    position: absolute;\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 100%;\n}\n.modall img[data-v-64fd3c54]{\n    max-width: 100%;\n    display: block;\n    margin: 0 auto;\n}\n\n", ""]);
+exports.push([module.i, "\n.upload[data-v-64fd3c54] {\n    width: 78px;\n    height: 78px;\n    line-height: 78px;\n    text-align: center;\n    overflow: hidden;\n    background: #fff;\n    position: relative;\n    margin-right: 8px;\n    transition: border-color .2s ease;\n    border-radius: 3px;\n}\n.upload:hover .list-cover[data-v-64fd3c54] {\n    display: block;\n}\n.upload:hover .upload-input[data-v-64fd3c54] {\n    border-color: #00C8AF;\n    color: #00C8AF;\n}\n.list-cover[data-v-64fd3c54] {\n    display: none;\n    position: absolute;\n    top: 0;\n    bottom: 0;\n    left: 0;\n    right: 0;\n    background: rgba(0, 0, 0, .6);\n}\n.list-cover i[data-v-64fd3c54] {\n    color: #fff;\n    font-size: 20px;\n    cursor: pointer;\n    margin: 0 2px;\n}\ninput[type='file'][data-v-64fd3c54] {\n    width: 0;\n    height: 0;\n    opacity: 0;\n    z-index: -1;\n    position: absolute;\n}\n.upload-input[data-v-64fd3c54] {\n    cursor: pointer;\n    position: absolute;\n    top: 0;\n    bottom: 0;\n    left: 0;\n    right: 0;\n    border: 1px solid #dddddd;\n    border-radius: 3px;\n    line-height: normal;\n    display: flex;\n    flex-wrap: wrap;\n    align-content: center;\n    justify-content: center;\n    color: #C8C8C8;\n}\n.upload-input i[data-v-64fd3c54] {\n    font-size: 20px;\n    margin-bottom: 5px;\n    width: 100%;\n}\n.upload-input span[data-v-64fd3c54] {\n    display: block;\n    font-size: 13px;\n    /*white-space: nowrap;*/\n}\n.upload img[data-v-64fd3c54]{\n    position: absolute;\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 100%;\n}\n.modall img[data-v-64fd3c54]{\n    max-width: 100%;\n    display: block;\n    margin: 0 auto;\n}\n", ""]);
 
 // exports
 
 
 /***/ }),
-/* 43 */
+/* 44 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(undefined);
@@ -41816,7 +41827,7 @@ exports.push([module.i, "\n#quill-container {\n    height: 400px;\n}\n", ""]);
 
 
 /***/ }),
-/* 44 */
+/* 45 */
 /***/ (function(module, exports) {
 
 exports.read = function (buffer, offset, isLE, mLen, nBytes) {
@@ -41906,7 +41917,7 @@ exports.write = function (buffer, value, offset, isLE, mLen, nBytes) {
 
 
 /***/ }),
-/* 45 */
+/* 46 */
 /***/ (function(module, exports) {
 
 /*!
@@ -41930,17 +41941,6 @@ function isBuffer (obj) {
 function isSlowBuffer (obj) {
   return typeof obj.readFloatLE === 'function' && typeof obj.slice === 'function' && isBuffer(obj.slice(0, 0))
 }
-
-
-/***/ }),
-/* 46 */
-/***/ (function(module, exports) {
-
-var toString = {}.toString;
-
-module.exports = Array.isArray || function (arr) {
-  return toString.call(arr) == '[object Array]';
-};
 
 
 /***/ }),
@@ -52963,7 +52963,7 @@ module.exports = __webpack_require__(62);
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(41);
+var content = __webpack_require__(42);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -52994,7 +52994,7 @@ if(false) {
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(42);
+var content = __webpack_require__(43);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -53025,7 +53025,7 @@ if(false) {
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(43);
+var content = __webpack_require__(44);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;

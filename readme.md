@@ -388,9 +388,9 @@ npm install --save vue-template-compiler quill css-loader
 
 
 ### 文件上传 ajax
+
 npm i -S formidable
-
-
+sudo npm install node-uuid
 
 
 

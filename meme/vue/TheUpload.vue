@@ -23,7 +23,7 @@
 </template>
 <script>
     export default {
-        name: 'my-upload',
+        name: 'the-upload',
         data(){
             return {
                 filesrc: null,
@@ -65,7 +65,7 @@
                     reader.onload = function (e) {
                         self.uploadImg(files[0], self.name, function (res) {
                             self.filesrc = e.target.result;
-                            self.$emit('uploadsuccess', res.files[0]);
+                            self.$emit('uploadsuccess', res.path);
                         });
                         self.$refs.file.value = null;
                     }
@@ -203,5 +203,4 @@
         display: block;
         margin: 0 auto;
     }
-
 </style>

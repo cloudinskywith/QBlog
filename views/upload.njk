@@ -2,21 +2,23 @@
 
 
 {% block body %}
-        <input id="upload-input" type="file" @change="uploadPostImage">
+    <the-upload desc="正面" @uploadsuccess="handleUploadSuccess($event, 'stepFour', 'front_img')" name="front"
+                style="float:left;"></the-upload>
 {% endblock %}
 
 
 {% block scripts %}
     <script>
         var vm = new Vue({
-            el:'.q-blog',
+            el: '.q-blog',
             data(){
-                return{
-
-                }
+                return {}
             },
-            methods:{
+            methods: {
                 uploadPostImage(){
+
+                },
+                handleUploadSuccess: function (event, hint, name) {
 
                 }
             }

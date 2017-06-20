@@ -3,6 +3,12 @@
 {% block styles %}
     <link rel="stylesheet" href="/css/quill.core.css">
     <link rel="stylesheet" href="/css/quill.snow.css">
+    <style>
+        .post-cover>.upload{
+            width:300px!important;
+            height:300px!important;
+        }
+    </style>
 {% endblock %}
 
 {% block body %}
@@ -27,13 +33,13 @@
             </Form-Item>
 
             <Form-Item label="文章封面">
-                <the-upload desc="正面" @uploadsuccess="handleUploadSuccess($event, 'stepFour', 'front_img')" name="front"
-                            style="float:left;"></the-upload>
-                {#<input id="upload-input" type="file" @change="uploadPostImage">#}
+                <the-upload desc="正面" class="post-cover"
+                            @uploadsuccess="handleUploadSuccess($event, 'stepFour', 'front_img')">
+                </the-upload>
             </Form-Item>
 
             <Form-Item label="文章概述">
-                <textarea v-model="onePost.meta_description"></textarea>
+                <my-editor v-model="onePost.meta_description"></my-editor>
             </Form-Item>
 
 
@@ -68,10 +74,8 @@
                         }
                     })
                 },
-                handleUploadSuccess:function(event,hint,name){
-                    if(name=='tail_img'){
-                        this.newGuide.gic_tail_path = event.path;
-                    }
+                handleUploadSuccess: function (event, hint, name) {
+                    this.onePost.page_image = event.path;
                 },
                 uploadPostImage(){
 
