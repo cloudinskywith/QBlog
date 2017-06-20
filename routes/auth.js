@@ -1,5 +1,7 @@
 // var authController = require('../controllers/authcontroller.js');
 var users = require('../routes/users');
+var formidable = require('formidable');
+var fs = require('fs');
 
 module.exports = function(app,passport){
     app.get('/signup', users.get('/signup'));
@@ -40,6 +42,48 @@ module.exports = function(app,passport){
         failureRedirect: '/signup'}
     ));
 
+    // app.post('/signup',function (req, res, next) {
+    //     passport.authenticate('local-signup',function (err, user, info) {
+    //         if(err) return next(err)
+    //         if(user){
+    //             var response = {
+    //                 status:0,
+    //                 msg:'用户已存在，请登录',
+    //                 location:'/login'
+    //             }
+    //             return res.json(response);
+    //         }else{
+    //             var response = {
+    //                 status:1,
+    //                 msg:'注册成功，请登录',
+    //                 location:'/login'
+    //             }
+    //             return res.json(response);
+    //         }
+    //     })(req, res, next);
+    // });
+
+    app.get('/upload',function (req, res, next) {
+        res.render('upload');
+        // res.send('ok');
+    });
+
+
+    app.post('/upload',function (req, res) {
+        var form = new formidable.IncomingForm();
+        form.uploadDir = path.join(__dirname + '/public/upload');
+        form.on('file',function(field, file){
+            fs.rename(file.path, path.join(form.uploadDir, file.name));
+        });
+        form.on('error',function(err){
+            console.log('An error has occured:\n' + err);
+        })
+        form.on('end',function(){
+            res.send('success');
+        })
+        // form.parse(req);
+        res.send('ok');
+    });
 
     function isLoggedIn(req, res, next) {
         console.log(req.isAuthenticated());

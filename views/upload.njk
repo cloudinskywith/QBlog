@@ -1,0 +1,25 @@
+{% extends "layout.njk" %}
+
+
+{% block body %}
+        <input id="upload-input" type="file" @change="uploadPostImage">
+{% endblock %}
+
+
+{% block scripts %}
+    <script>
+        var vm = new Vue({
+            el:'.q-blog',
+            data(){
+                return{
+
+                }
+            },
+            methods:{
+                uploadPostImage(){
+
+                }
+            }
+        })
+    </script>
+{% endblock %}

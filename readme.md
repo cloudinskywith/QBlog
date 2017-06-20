@@ -379,16 +379,16 @@ gulp.task('default',['browser-sync'],function(){
 
 ### 准备注册和登录部分
 ```
-//https://scotch.io/tutorials/easy-node-authentication-setup-and-local
-//https://www.danielgynn.com/build-an-authentication-app-using-express-node-passport/
 https://code.tutsplus.com/tutorials/using-passport-with-sequelize-and-mysql--cms-27537
-
-npm install --save passport passport-local connect-flash bcrypt-nodejs
-npm install morgan method-override express-session --save
- npm install --save bcrypt-nodejs passport passport-local cookie-parser body-parser express-session
-
 ```
 
+### 富文本编辑器
+MyEditor 
+npm install --save vue-template-compiler quill css-loader 
+
+
+### 文件上传 ajax
+npm i -S formidable
 
 
 

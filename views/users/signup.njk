@@ -35,7 +35,8 @@
                 doSignup(){
                     axios.post('/signup',vm.newUser).then(function(response){
                         console.log(response);
-                        vm.$Message.info(response.data);
+                        vm.$Message.info(response.data.msg);
+                        window.location.href = response.data.location;
                     }).catch(function(err){
                         vm.$Message.error(err);
                     })

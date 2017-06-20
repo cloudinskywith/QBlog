@@ -1,0 +1,82 @@
+{% extends "../layout.njk" %}
+
+{% block styles %}
+    <link rel="stylesheet" href="/css/quill.core.css">
+    <link rel="stylesheet" href="/css/quill.snow.css">
+{% endblock %}
+
+{% block body %}
+    <div>
+        <i-form label-position="left" :label-width="82"
+                style="width:625px;">
+            <Form-Item label="发布时间">
+                <Date-picker type="date" v-model="onePost.published_at"></Date-picker>
+            </Form-Item>
+
+            <Form-Item label="标题">
+                <i-input placeholder="请输入标题" v-model="onePost.title"></i-input>
+            </Form-Item>
+            <Form-Item label="SLUG">
+                <i-input placeholder="请输入链接" v-model="onePost.slug"></i-input>
+            </Form-Item>
+            <Form-Item label="副标题">
+                <i-input placeholder="请输入副标题" v-model="onePost.subtitle"></i-input>
+            </Form-Item>
+            <Form-Item label="内容">
+                <my-editor v-model="onePost.content"></my-editor>
+            </Form-Item>
+
+            <Form-Item label="文章封面">
+                <the-upload desc="正面" @uploadsuccess="handleUploadSuccess($event, 'stepFour', 'front_img')" name="front"
+                            style="float:left;"></the-upload>
+                {#<input id="upload-input" type="file" @change="uploadPostImage">#}
+            </Form-Item>
+
+            <Form-Item label="文章概述">
+                <textarea v-model="onePost.meta_description"></textarea>
+            </Form-Item>
+
+
+            <i-button type="primary" @click="savePost">保存</i-button>
+        </i-form>
+    </div>
+{% endblock %}
+
+
+{% block scripts %}
+    <script>
+        var vm = new Vue({
+            el: '.q-blog',
+            data(){
+                return {
+                    onePost: {
+                        content: '',
+                        title: '',
+                        subtitle: '',
+                        slug: '',
+                        page_image: '',
+                        meta_description: '',
+                        published_at: ''
+                    }
+                }
+            },
+            methods: {
+                savePost(){
+                    axios.post('/posts/create', vm.onePost).then(function (response) {
+                        if (response.data.status == 1) {
+                            //说明保存成功
+                        }
+                    })
+                },
+                handleUploadSuccess:function(event,hint,name){
+                    if(name=='tail_img'){
+                        this.newGuide.gic_tail_path = event.path;
+                    }
+                },
+                uploadPostImage(){
+
+                }
+            },
+        })
+    </script>
+{% endblock %}

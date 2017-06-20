@@ -7,6 +7,8 @@ import $ from 'jquery';
 import axios from 'axios';
 
 Vue.component('CityItem',require('./vue/CityItem.vue'));
+Vue.component('MyEditor',require('./vue/MyEditor.vue'));
+Vue.component('TheUpload',require('./vue/TheUpload.vue'));
 
 Vue.use(iview);
 window.$ = $;
