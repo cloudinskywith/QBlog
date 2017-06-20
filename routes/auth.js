@@ -39,6 +39,8 @@ module.exports = function(app,passport){
         failureRedirect: '/signup'}
     ));
 
+
+
     function isLoggedIn(req, res, next) {
         if (req.isAuthenticated())
             return next();

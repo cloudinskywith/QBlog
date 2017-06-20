@@ -2,7 +2,7 @@
 
 {% block body %}
     <a href="/">首页</a>
-    <a href="/users/signup">注册</a>
+    <a href="/signup">注册</a>
     <div>
         <i-form label-position="left" :label-width="82"
                 style="width:625px;">
@@ -38,7 +38,7 @@
                     axios.post('/login', self.oneUser).then(function (response) {
                         console.log(response);
                         self.$Message.info(response.data.msg);
-//                        window.location.href = response.data.location;
+                        window.location.href = response.data.location;
                     })
                 },
 

@@ -6,10 +6,10 @@ var vm = new Vue({
 
     methods: {
         goToLogin(){
-            window.location.href = '/users/login';
+            window.location.href = '/login';
         },
         goToSignup(){
-            window.location.href = '/users/signup';
+            window.location.href = '/signup';
         }
     },
     mounted(){}
