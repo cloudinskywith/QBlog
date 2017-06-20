@@ -1,0 +1,29 @@
+{% extends "layout.njk" %}
+
+
+{% block body %}
+    <p v-cloak>邮箱 {{ oneUser.email }}</p>
+    <p v-cloak>Hash {{ oneUser.password }}</p>
+    <p v-cloak>创建时间 {{ oneUser.createdAt }}</p>
+
+{% endblock %}
+
+
+{% block scripts %}
+    <script>
+        var vm = new Vue({
+            el:'.q-blog',
+            data(){
+                return{
+                    oneUser:{}
+                }
+            },
+            mounted(){
+                axios.post('/profile').then(function(user){
+                    console.log(user.data);
+                    vm.oneUser = user.data;
+                })
+            }
+        })
+    </script>
+{% endblock %}

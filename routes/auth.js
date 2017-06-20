@@ -6,7 +6,8 @@ module.exports = function(app,passport){
     app.get('/login', users.get('/login'));
     app.get('/dashboard',isLoggedIn, users.get('/dashboard'));
     app.get('/logout',users.get('/logout'));
-    //
+    app.get('/profile',isLoggedIn, users.get('/profile'));
+    app.post('/profile',isLoggedIn,(users.post('/profile')));
     // app.post('/login', passport.authenticate('local-login',  { successRedirect: '/dashboard',
     //     failureRedirect: '/login'}
     // ));
@@ -40,10 +41,12 @@ module.exports = function(app,passport){
     ));
 
 
-
     function isLoggedIn(req, res, next) {
-        if (req.isAuthenticated())
+        console.log(req.isAuthenticated());
+        if (req.isAuthenticated()){
             return next();
-        res.redirect('/login');
+        }else{
+            res.redirect('/login');
+        }
     }
 }

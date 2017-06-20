@@ -19,10 +19,17 @@ router.get('/login', function (req, res, next) {
 
 
 router.get('/profile', function (req, res, next) {
-    res.render('users/profile', {
-        user: req.user
-    });
+    console.log(req.user);
+    // res.render('users/profile', {
+    //     user: req.user
+    // });
+    res.render('users/profile');
 });
+
+router.post('/profile',function (req, res, next) {
+    console.log('run post profile');
+    res.json(req.user);
+})
 
 router.get('/logout', function (req, res, next) {
     console.log(req);

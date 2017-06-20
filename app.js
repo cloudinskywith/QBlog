@@ -22,23 +22,23 @@ var io = require('socket.io')(server);
 
 //模版引擎
 var nunjucks = require('nunjucks');
-
+// https://mozilla.github.io/nunjucks/api.html#configure
 nunjucks.configure('views',{
     autoescape:true,
     express: app,
     cache:false,
+    tags:{
+        variableStart:'<$',
+        variableEnd:'$>'
+    }
 });
 
 io.on('connection',(socket)=>{
-    socket.emit('news',{hello:'world'});
-    socket.on('my-other-event',function(data){
-        console.log(data);
-    });
     setInterval(function(){
-        socket.emit('news',{hello:'world'});
+        socket.emit('result',{hello:'world'});
     },2000);
 });
-// server.listen(8089);
+server.listen(8089);
 
 
 

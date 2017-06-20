@@ -18,7 +18,7 @@
 </div>
 
 </body>
-{#<script src="https://cdn.bootcss.com/socket.io/2.0.3/socket.io.js"></script>#}
+<script src="https://cdn.bootcss.com/socket.io/2.0.3/socket.io.js"></script>
 <script src="https://cdn.bootcss.com/vue/2.3.4/vue.js"></script>
 <script src="/build/frontend.js"></script>
 {#<script src="/js/socket.io.js"></script>#}
@@ -26,11 +26,10 @@
 <script src="/build/iview.js"></script>
 
 <script>
-//    var socket = io.connect('http://localhost:8089');
-//    socket.on('news', data => {
-//        console.log('some thing here');
-//        console.log(data);
-//    })
+    var socket = io.connect('http://localhost:8089');
+    socket.on('result', data => {
+        console.log(data);
+    })
 </script>
 
 {% block scripts %}
