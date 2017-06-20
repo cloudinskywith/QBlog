@@ -7,4 +7,19 @@
 
 
 {% block scripts %}
+    <script>
+        var vm = new Vue({
+            el:'.q-blog',
+            data(){
+                return{
+
+                }
+            },
+            mounted(){
+                axios.post('/posts/index').then(function (data) {
+                    console.log(data);
+                })
+            }
+        })
+    </script>
 {% endblock %}

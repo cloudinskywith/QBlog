@@ -4,6 +4,7 @@ var formidable = require('formidable');
 var fs = require('fs');
 var path = require('path');
 var uuid = require('node-uuid');
+var pinyin = require('node-pinyin');
 
 module.exports = function(app,passport){
     app.get('/signup', users.get('/signup'));
@@ -66,6 +67,9 @@ module.exports = function(app,passport){
     // });
 
     app.get('/upload',function (req, res, next) {
+        console.log(pinyin('我说你好'));
+        var slug = pinyin('你说你好');
+        console.log(slug.join('-'));
         res.render('upload');
         // res.send('ok');
     });
@@ -88,12 +92,10 @@ module.exports = function(app,passport){
                 status:1,
                 msg:'上传成功',
                 path:'/upload/' + image_name + '.jpg'
-                // location:'/dashboard',
             };
             res.json(response);
         });
-
-    })
+    });
 
 
     function isLoggedIn(req, res, next) {

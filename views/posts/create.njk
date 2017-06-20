@@ -38,11 +38,10 @@
                 </the-upload>
             </Form-Item>
 
+
             <Form-Item label="文章概述">
-                <my-editor v-model="onePost.meta_description"></my-editor>
+                <i-input v-model="onePost.meta_description"></i-input>
             </Form-Item>
-
-
             <i-button type="primary" @click="savePost">保存</i-button>
         </i-form>
     </div>
@@ -71,11 +70,14 @@
                     axios.post('/posts/create', vm.onePost).then(function (response) {
                         if (response.data.status == 1) {
                             //说明保存成功
+                            vm.$Message.info(response.data.msg);
+                            window.location.href= response.data.location;
                         }
                     })
                 },
                 handleUploadSuccess: function (event, hint, name) {
-                    this.onePost.page_image = event.path;
+                    console.log(event);
+                    this.onePost.page_image = event;
                 },
                 uploadPostImage(){
 

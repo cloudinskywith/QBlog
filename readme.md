@@ -392,6 +392,8 @@ npm install --save vue-template-compiler quill css-loader
 npm i -S formidable
 sudo npm install node-uuid
 
+### 友好的链接
+npm install node-pinyin
 
 
 
